@@ -9,7 +9,7 @@ const Schema = mongoose.Schema;
 //* ----- Workout Model ----- *\\ 
 
 const workoutSchema = new Schema({
-  _id: mongoose.Schema.Type.ObjectID,
+  _id: mongoose.Schema.Type.ObjectId,
   day: {
     type: Date,
     default: Date.now
