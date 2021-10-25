@@ -9,11 +9,9 @@ const Schema = mongoose.Schema;
 //* ----- Exercises Model ----- *\\ 
 
 const exercisesSchema = new Schema({
+  _id: mongoose.Schema.Type.ObjectId,
   type:String,
-    
-  
   name: String,
-    
   duration: Number,
   weight: Number,
   reps: Number,
