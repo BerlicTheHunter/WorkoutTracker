@@ -7,9 +7,9 @@ const apiRoutes = require(path.join(__dirname, '/api/api.js'));
 router.use('/api', apiRoutes);
 
 //* ----- View Routes -----*\\
-router.get('/', (req, res) =>
-res.sendFile(path.join(__dirname, '../public/index.html'))
-);
+// router.get('/', (req, res) =>
+// res.sendFile(path.join(__dirname, '../public/index.html'))
+// );
 
 router.get('/stats', (req, res) =>
 res.sendFile(path.join(__dirname, '../public/stats.html'))

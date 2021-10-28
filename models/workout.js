@@ -9,16 +9,15 @@ const Schema = mongoose.Schema;
 //* ----- Workout Model ----- *\\ 
 
 const workoutSchema = new Schema({
-  _id: mongoose.Schema.Type.ObjectId,
+  _id:{
+    types:Schema.Types.ObjectId
+  },
   day: {
     type: Date,
     default: Date.now
   },
-  exercises: [{
-      // This line links to exercise collection
-      type: Schema.Types.ObjectId, 
-      ref: "Exercises"
-    }]   
+  exercises:{ type : Array , "default" : [] }
+    
 });
 
 //* ----- Set Workout Model in Mongoose ----- *\\
