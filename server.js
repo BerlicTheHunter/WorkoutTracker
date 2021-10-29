@@ -8,7 +8,7 @@ const routes = require('./routes')
 
 //* ----- Set port and app variables ------ *\\
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 const app = express();
 
 //* ----- Initialize Middleware ----- *\\

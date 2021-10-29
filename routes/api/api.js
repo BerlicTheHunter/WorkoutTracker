@@ -2,7 +2,7 @@ const router = require('express').Router();
 const path = require('path');
 const db = require("../../models");
 const mongoose = require("mongoose");
-// const { request } = require('http');
+
 
 // * GET request for last workout at /workouts
 router.get("/workouts",(req, res) => {
@@ -34,16 +34,51 @@ router.put("/workouts/:id", (req, res) => {
         res.json(error);
         res.status(404)
       } else {
-        console.log("New Exercise Succesfully Inserted");
+        console.log("new record successfully inserted")
         res.status(200);
-      }
+      }  
     }
-  );  
+  )  
 });
 
 
-// todo POST request to create a new workout at /workouts
-
-// todo GET request for date range of workouts at /workouts/range
+//* POST request to create a new workout at /workouts
+router.post("/workouts",(req, res) => {
+  db.Workout.create(
+    {
+    date: Date.now(),
+    exercises: []   
+    }
+  )
+    .then(dbNewWorkout => {
+      res.json(dbNewWorkout);
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(400).json(err);
+      
+    });
+  
+});
+//* GET request for date range of workouts at /workouts/range
+router.get("/workouts/range",(req, res) => {
+  db.Workout.find()
+    .then(dbWorkout => {        
+      if(dbWorkout.length > 7){
+        const rangeStart = dbWorkout.length -7
+        const lastWeek= dbWorkout.slice(rangeStart);
+        console.log(lastWeek.length);
+        res.json(lastWeek);       }
+      else{
+        const lastWeek= dbWorkout;
+        res.json(lastWeek); 
+      }
+    })
+    .catch(err => {
+      res.status(400).json(err);
+      }
+    );
+  }
+);
 
 module.exports = router;

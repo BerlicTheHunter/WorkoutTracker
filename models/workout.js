@@ -9,9 +9,9 @@ const Schema = mongoose.Schema;
 //* ----- Workout Model ----- *\\ 
 
 const workoutSchema = new Schema({
-  _id:{
-    types:Schema.Types.ObjectId
-  },
+  // _id:{
+  //   types:Schema.Types.ObjectId
+  // },
   day: {
     type: Date,
     default: Date.now
